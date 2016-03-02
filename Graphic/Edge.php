@@ -4,15 +4,15 @@ namespace Graphic;
 
 class Edge {
     
-    public $vex_head;
+    public $head;
     
-    public $vex_tail;
+    public $tail;
     
     public $weight;
 
-    public function __construct($vex_head, $vex_tail, $weight) {
-        $this->vex_head = $vex_head;
-        $this->vex_tail = $vex_tail;
-        $this->weight    = $weight;
+    public function __construct($head, $tail, $weight = 0) {
+        $this->head   = $head;
+        $this->tail   = $tail;
+        $this->weight = $weight;
     }
 } 
