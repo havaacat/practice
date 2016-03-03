@@ -3,10 +3,14 @@
 namespace Graphic;
 
 class GraALG {
+    const INFINITY = 65535;
+    const CONNECT  = 1;
     public $verex;
     public $edges;
     public $graphic;
-
+    //dijkstr用来记录最短路径和前置节点
+    public $dijkstra;
+    public $adjMatrix;
     public function __construct($verex, $edges, $graphic) {
         $this->verex = $verex;
         $this->edges = $edges;
@@ -58,6 +62,24 @@ class GraALG {
         }     
     }
 
+    //邻接表转换成邻接矩阵
+    public function toAdjMatrix() {
+        $this->adjMatrix = array();
+        foreach ($this->verex as $vex_i) {
+            $arr = array();
+            foreach ($this->verex as $vex_j) {
+                $edge_key = $vex_i->name . $vex_j->name;
+                if (!empty($this->edges[$edge_key])) {
+                    $arr [] = $this->edges[$edge_key]->weight;                    
+                } else {
+                    $arr [] = self::INFINITY;
+                }
+            }
+            $this->adjMatrix [] = $arr;
+        }        
+    }
     //最短路径的问题
-     
+    public function shortestPathDijkstrai() {
+           
+    }
 }
