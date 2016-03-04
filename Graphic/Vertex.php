@@ -6,6 +6,8 @@ class Vertex {
     public $name;
     public $data;
     public $visited;
+    public $pre;
+    public $shortest;
 
     public function __construct($name, $data = 0, $visited = 0) {
         $this->name = $name;

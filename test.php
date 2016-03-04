@@ -44,4 +44,5 @@ $graphic = new GraALG($verex, $edges, $graphic_arr);
 #$graphic->DFSTraverse();
 #$graphic->BFSTraverse();
 $graphic->toAdjMatrix();
-print_r($graphic->adjMatrix);
+$graphic->shortestPathDijkstra(0);
+print_r($graphic->verex);
