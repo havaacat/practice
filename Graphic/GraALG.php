@@ -124,11 +124,60 @@ class GraALG {
 
     public function shortestFloyd()
     {
-        //$this->depth;
-        //$this->path;        
+        $this->depth = array();
+        $this->path = array();        
+        $this->depth = $this->adjMatrix;
         $length = count($this->verex);
         for ($i=0; $i < $length; $i++) {
-            
+            $row = array();
+            for ($j=0; $j < $length; $j++) {
+               $row [] = $j; 
+            } 
+            $this->path [] = $row;
         }
+        for ($w=0; $w < $length; $w++) {
+            for ($i=0; $i < $length; $i++) {
+                for ($j=0; $j < $length; $j++) {
+                    if ($this->depth[$i][$j] > $this->depth[$i][$w] + $this->depth[$w][$j]) {
+                        $this->depth[$i][$j] = $this->depth[$i][$w] + $this->depth[$w][$j];
+                        $this->path[$i][$j] = $this->path[$i][$w];
+                    }
+                }
+            }
+        }
+        $this->printShortestFloyd();
+    }
+
+    public function printShortestFloyd()
+    {
+        echo "path:", PHP_EOL;
+        self::printArray($this->path);
+        echo "depth:", PHP_EOL;
+        self::printArray($this->depth);
+        echo "adjMatrix:", PHP_EOL;
+        self::printArray($this->adjMatrix);
+    }
+    
+    public static function printArray($array) 
+    {
+        $i = 0;
+        $j = -1;
+       
+        foreach ($array as $values) {
+            echo sprintf("%8d", $j++);
+            foreach ($values as $value) {
+                echo sprintf("%8d", $j++);
+            }
+            echo PHP_EOL;
+            break;
+        }
+        foreach ($array as $values) {
+            echo sprintf("%8d", $i++);
+            foreach ($values as $value) {
+                echo sprintf("%8d",$value);
+            }
+            echo PHP_EOL;
+        }
+        echo PHP_EOL;
     }
 }
