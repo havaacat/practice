@@ -2,21 +2,7 @@
 
 namespace Sort;
 
-class BubbleSort {
-    public $array;
-    
-    public function __construct($array) 
-    {
-        $this->array = $array;
-    } 
-
-    public function swap($i, $j) 
-    {
-        $value = $this->array[$i];
-        $this->array[$i] = $this->array[$j];
-        $this->array[$j] = $value;
-    }
-
+class BubbleSort extends Sort{
     //冒泡排序初级版,
     public function bubble0()
     {
@@ -28,7 +14,7 @@ class BubbleSort {
                 }
             }
             echo "i=$i :";
-            self::printArray($this->array);
+            Sort::printArray($this->array);
         }
     }
 
@@ -42,7 +28,7 @@ class BubbleSort {
                 }
             }
             echo "i=$i :";
-            self::printArray($this->array);
+            Sort::printArray($this->array);
         }
     }
     
@@ -59,16 +45,8 @@ class BubbleSort {
                 }
             }
             echo "i=$i, flag = $flag :";
-            self::printArray($this->array);
+            Sort::printArray($this->array);
         }
-    }
-    
-    public static function printArray($array) 
-    {
-        foreach ($array as $value) {
-            echo sprintf("%4d",$value);
-        }
-        echo PHP_EOL;
     }
 }
 
